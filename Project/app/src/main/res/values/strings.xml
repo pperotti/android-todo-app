@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">To-Do App</string>
+
+    <string name="label_add_note">Add New Note</string>
+    <string name="label_no_data">No Data</string>
+
+    <string name="label_title">Title</string>
+    <string name="label_description">Description</string>
+    <string name="label_list_fragment_title">ToDo - All Items</string>
+    <string name="label_add_fragment_title">"ToDo - Add New Note"</string>
+    <string name="label_update_fragment_title">ToDo - Update Note</string>
+
+    <string-array name="array_priorities">
+        <item>High Priority</item>
+        <item>Medium Priority</item>
+        <item>Low Priority</item>
+    </string-array>
 </resources>

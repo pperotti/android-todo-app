@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav.xml"
+    app:startDestination="@id/listFragment">
+
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.pabloperotti.android.samples.todoapp.list.ListFragment"
+        android:label="@string/label_list_fragment_title"
+        tools:layout="@layout/list_fragment" >
+        <action
+            android:id="@+id/action_listFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.pabloperotti.android.samples.todoapp.add.AddFragment"
+        android:label="@string/label_add_fragment_title"
+        tools:layout="@layout/add_fragment" >
+        <action
+            android:id="@+id/action_addFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.pabloperotti.android.samples.todoapp.update.UpdateFragment"
+        android:label="@string/label_update_fragment_title"
+        tools:layout="@layout/update_fragment" >
+        <action
+            android:id="@+id/action_updateFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+</navigation>
