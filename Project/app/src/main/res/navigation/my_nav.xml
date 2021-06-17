@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.pabloperotti.android.samples.todoapp.list.ListFragment"
+        android:name="com.pabloperotti.android.samples.todoapp.fragments.list.ListFragment"
         android:label="@string/label_list_fragment_title"
         tools:layout="@layout/list_fragment" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/addFragment"
-        android:name="com.pabloperotti.android.samples.todoapp.add.AddFragment"
+        android:name="com.pabloperotti.android.samples.todoapp.fragments.add.AddFragment"
         android:label="@string/label_add_fragment_title"
         tools:layout="@layout/add_fragment" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateFragment"
-        android:name="com.pabloperotti.android.samples.todoapp.update.UpdateFragment"
+        android:name="com.pabloperotti.android.samples.todoapp.fragments.update.UpdateFragment"
         android:label="@string/label_update_fragment_title"
         tools:layout="@layout/update_fragment" >
         <action

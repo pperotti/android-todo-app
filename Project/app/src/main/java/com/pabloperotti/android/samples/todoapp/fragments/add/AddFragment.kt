@@ -1,4 +1,4 @@
-package com.pabloperotti.android.samples.todoapp.update
+package com.pabloperotti.android.samples.todoapp.fragments.add
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,25 +8,27 @@ import android.view.View
 import android.view.ViewGroup
 import com.pabloperotti.android.samples.todoapp.R
 
-class UpdateFragment : Fragment() {
+class AddFragment : Fragment() {
 
     companion object {
-        fun newInstance() = UpdateFragment()
+        fun newInstance() = AddFragment()
     }
 
-    private lateinit var viewModel: UpdateViewModel
+    private lateinit var viewModel: AddViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.update_fragment, container, false)
+        val view = inflater.inflate(R.layout.add_fragment, container, false)
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(AddViewModel::class.java)
 
-        viewModel = ViewModelProvider(this).get(UpdateViewModel::class.java)
         // TODO: Use the ViewModel
     }
 }

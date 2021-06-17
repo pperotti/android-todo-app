@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-    tools:context=".add.AddFragment">
+    tools:context=".fragments.add.AddFragment">
 
     <EditText
         android:id="@+id/new_note_title"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:background="@android:color/transparent"
+        android:background="@drawable/custom_layout"
         android:ems="10"
         android:hint="@string/label_title"
         android:inputType="textPersonName"
@@ -28,7 +28,7 @@
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginTop="8dp"
-        android:background="@android:color/transparent"
+        android:background="@drawable/custom_layout"
         android:entries="@array/array_priorities"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
@@ -42,7 +42,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
-        android:background="@android:color/transparent"
+        android:background="@drawable/custom_layout"
         android:ems="10"
         android:gravity="top|start"
         android:hint="@string/label_description"

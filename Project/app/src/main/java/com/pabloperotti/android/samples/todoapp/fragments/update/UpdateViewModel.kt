@@ -1,4 +1,4 @@
-package com.pabloperotti.android.samples.todoapp.update
+package com.pabloperotti.android.samples.todoapp.fragments.update
 
 import androidx.lifecycle.ViewModel
 
