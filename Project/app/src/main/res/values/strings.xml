@@ -15,4 +15,13 @@
         <item>Medium Priority</item>
         <item>Low Priority</item>
     </string-array>
+
+    <string name="label_search">Search</string>
+    <string name="label_sort_by">Sort By</string>
+    <string name="label_priority_high">Priority High</string>
+    <string name="label_priority_low">Priority Low</string>
+    <string name="label_delete_all">Delete All</string>
+    <string name="label_add">Add</string>
+    <string name="label_save">Save</string>
+    <string name="label_delete">Delete</string>
 </resources>

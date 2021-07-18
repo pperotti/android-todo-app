@@ -2,10 +2,8 @@ package com.pabloperotti.android.samples.todoapp.fragments.list
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.pabloperotti.android.samples.todoapp.R
 
@@ -21,10 +19,13 @@ class ListFragment : Fragment() {
         view.findViewById<View>(R.id.listAddNewNote).setOnClickListener {
             findNavController().navigate(R.id.action_listFragment_to_addFragment)
         }
-
         view.findViewById<View>(R.id.listLayout).setOnClickListener {
             findNavController().navigate(R.id.action_listFragment_to_updateFragment)
         }
+
+        // Enable Options Menu
+        setHasOptionsMenu(true)
+
         return view
     }
 
@@ -32,5 +33,9 @@ class ListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         // TODO: Use the ViewModel
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.list_fragment_menu, menu)
     }
 }

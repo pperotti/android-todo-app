@@ -2,17 +2,11 @@ package com.pabloperotti.android.samples.todoapp.fragments.update
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.pabloperotti.android.samples.todoapp.R
 
 class UpdateFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = UpdateFragment()
-    }
 
     private lateinit var viewModel: UpdateViewModel
 
@@ -20,6 +14,10 @@ class UpdateFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        // Enable Options Menu
+        setHasOptionsMenu(true)
+
         return inflater.inflate(R.layout.update_fragment, container, false)
     }
 
@@ -28,5 +26,9 @@ class UpdateFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(UpdateViewModel::class.java)
         // TODO: Use the ViewModel
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.update_fragment_menu, menu)
     }
 }
