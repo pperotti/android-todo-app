@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
     //id 'kotlin-android-extensions' //NOT USED ANYMORE. (https://developer.android.com/topic/libraries/view-binding)
 }
 

@@ -1,23 +1,9 @@
 package com.pabloperotti.android.samples.todoapp.data
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.pabloperotti.android.samples.todoapp.data.models.ToDoData
 
-@Dao
-interface ToDoDao {
-
-    @Query("SELECT * FROM todo_table ORDER BY id ASC")
-    fun getAllData(): LiveData<List<ToDoData>>
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertData(toDoData: ToDoData)
-}
-
-/*
 @Dao
 interface ToDoDao {
 
@@ -44,7 +30,4 @@ interface ToDoDao {
 
     @Query("SELECT * FROM todo_table ORDER BY CASE WHEN priority LIKE 'L%' THEN 1 WHEN priority LIKE 'M%' THEN 2 WHEN priority LIKE 'H%' THEN 3 END")
     fun sortByLowPriority(): LiveData<List<ToDoData>>
-
 }
-
- */

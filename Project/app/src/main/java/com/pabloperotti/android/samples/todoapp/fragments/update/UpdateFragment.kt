@@ -1,34 +1,106 @@
 package com.pabloperotti.android.samples.todoapp.fragments.update
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.*
+import android.widget.EditText
+import android.widget.Spinner
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import com.example.todoapp.data.viewmodel.ToDoViewModel
 import com.pabloperotti.android.samples.todoapp.R
+import com.pabloperotti.android.samples.todoapp.data.models.Priority
+import com.pabloperotti.android.samples.todoapp.data.models.ToDoData
+import com.pabloperotti.android.samples.todoapp.fragments.SharedViewModel
 
 class UpdateFragment : Fragment() {
 
-    private lateinit var viewModel: UpdateViewModel
+    //private lateinit var viewModel: UpdateViewModel
+    private val sharedViewModel: SharedViewModel by viewModels()
+    private val toDoViewModel: ToDoViewModel by viewModels()
+
+    // Safe Args
+    private val args by navArgs<UpdateFragmentArgs>()
+
+    // Widgets
+    private lateinit var title: EditText
+    private lateinit var description: EditText
+    private lateinit var priorities: Spinner
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
+        val view = inflater.inflate(R.layout.update_fragment, container, false)
+
         // Enable Options Menu
         setHasOptionsMenu(true)
 
-        return inflater.inflate(R.layout.update_fragment, container, false)
-    }
+        // Get the widgets
+        title = view.findViewById<EditText>(R.id.note_title)
+        description = view.findViewById<EditText>(R.id.note_description)
+        priorities = view.findViewById<Spinner>(R.id.note_priorities)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        // Update the view with the information received from the safe args
+        title.setText(args.current.title)
+        description.setText(args.current.description)
+        priorities.setSelection(
+            parsePriority(args.current.priority)
+        )
+        priorities.onItemSelectedListener = sharedViewModel.listener
 
-        viewModel = ViewModelProvider(this).get(UpdateViewModel::class.java)
-        // TODO: Use the ViewModel
+        return view
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.update_fragment_menu, menu)
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.menu_save) {
+            updateItem()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun updateItem() {
+        val titleValue = title.text.toString()
+        val descriptionValue = description.text.toString()
+        val priority = sharedViewModel.parsePriority(priorities.selectedItem.toString())
+
+        if (sharedViewModel.verifyDataFromUser(titleValue, descriptionValue)) {
+            val newNote = ToDoData(
+                args.current.id,
+                titleValue,
+                priority,
+                descriptionValue
+            )
+            toDoViewModel.updateData(newNote)
+
+            // Notify the user
+            Toast.makeText(
+                requireContext(),
+                "Note Updated!",
+                Toast.LENGTH_LONG
+            ).show()
+
+            // Go back to the list
+            findNavController().navigate(R.id.action_updateFragment_to_listFragment)
+        }
+    }
+
+    fun parsePriority(priority: Priority): Int {
+        return when (priority) {
+            Priority.HIGH -> 0
+            Priority.MEDIUM -> 1
+            Priority.LOW -> 2
+        }
+    }
+
+
+
 }
